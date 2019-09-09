@@ -249,4 +249,8 @@
   <array
     arrayentity="Poliza"
     name="Polizas"/>
+  <onetoone
+    fkentity="Poliza"
+    name="ContactPolicy"
+    nullok="true"/>
 </extension>

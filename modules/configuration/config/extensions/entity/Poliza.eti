@@ -10,10 +10,6 @@
     fkentity="ABContact"
     name="Contact"
     nullok="true"/>
-  <onetoone
-    fkentity="ABContact"
-    name="ContactPoliza"
-    nullok="true"/>
   <array
     arrayentity="Coverage_Ext"
     name="Coverages"/>
