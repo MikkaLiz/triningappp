@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<entity
+  xmlns="http://guidewire.com/datamodel"
+  entity="Interaction_Ext"
+  table="interaction_ext"
+  type="retireable">
+  <typekey
+    name="InteractionReason"
+    nullok="false"
+    typelist="InteractionReason_Ext"/>
+  <typekey
+    name="ChannelType"
+    nullok="true"
+    typelist="ChannelType_Ext"/>
+</entity>

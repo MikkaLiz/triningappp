@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<typelist xmlns="http://guidewire.com/typelists" name="ConstructionMat" desc="">
+  <typecode
+    code="Madera"
+    name="Madera"
+    priority="10"/>
+  <typecode
+    code="Ladrillo"
+    name="Ladrillo"
+    priority="20"/>
+  <typecode
+    code="Vulcanita"
+    name="Vulcanita"
+    priority="30"/>
+  <typecode
+    code="Cemento"
+    name="Cemento"
+    priority="40"/>
+</typelist>

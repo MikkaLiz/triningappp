@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<typelist xmlns="http://guidewire.com/typelists" name="CoverageDescription" desc="">
+  <typecode
+    code="CobAuto1"
+    name="Daño contra terceros"></typecode>
+  <typecode
+    code="CobAuto2"
+    name="Choques"/>
+  <typecode
+    code="CobAuto5"
+    name="Sistemas eléctricos"/>
+  <typecode
+    code="CobAuto4"
+    name="Llantas de nieve"/>
+  <typecode
+    code="CobAuto3"
+    name="Siniestros"/>
+  <typecode
+    code="CobHome1"
+    name="Base"/>
+  <typecode
+    code="CobHome2"
+    name="Bienes Personales"/>
+  <typecode
+    code="CobHome4"
+    name="Incendios"/>
+  <typecode
+    code="CobHome5"
+    name="Inundaciones"/>
+  <typecode
+    code="CobHome3"
+    name="Terremotos"/>
+</typelist>

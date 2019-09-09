@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../pcf.xsd">
+  <InputSet
+    id="NewCompanyInputSet">
+    <Require
+      name="anABCompany"
+      type="ABContact"/>
+    <TextInput
+      editable="true"
+      id="Rut"
+      label="DisplayKey.get(&quot;Training.Rut&quot;)"
+      value="anABCompany.Rut_Ext"/>
+    <TextInput
+      editable="true"
+      id="FirstName"
+      label="DisplayKey.get(&quot;Training.Name&quot;)"
+      value="(anABCompany as ABCompany).Name"/>
+    <TextInput
+      editable="true"
+      id="Address"
+      label="DisplayKey.get(&quot;Training.Address&quot;)"
+      value="anABCompany.PrimaryAddress.AddressLine1"/>
+    <TextInput
+      editable="true"
+      id="ZipCode"
+      label="DisplayKey.get(&quot;Training.ZipCode&quot;)"
+      regex="&quot;[0-9]{7}&quot;"
+      value="anABCompany.CodigoPostal_Ext"/>
+    <TypeKeyInput
+      editable="true"
+      id="Region"
+      label="DisplayKey.get(&quot;Training.Region&quot;)"
+      value="anABCompany.Region"
+      valueType="typekey.Regiones_Ext"/>
+    <TextInput
+      editable="true"
+      id="EIN"
+      label="DisplayKey.get(&quot;Web.ContactDetail.Name.TaxID.EIN&quot;)"
+      value="(anABCompany as ABCompany).TaxID"/>
+  </InputSet>
+</PCF>

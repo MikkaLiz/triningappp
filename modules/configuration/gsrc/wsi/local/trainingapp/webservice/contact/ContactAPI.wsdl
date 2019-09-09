@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<!-- Generated WSDL for trainingapp.webservice.contact.ContactAPI web service -->
+<wsdl:definitions targetNamespace="http://example.com/trainingapp/webservice/contact/ContactAPI" name="ContactAPI" xmlns:gwsoap="http://guidewire.com/ws/soapheaders" xmlns:gwwsdl="http://guidewire.com/pl/wsdl" xmlns:pogo="http://example.com/trainingapp/webservice/contact" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://example.com/trainingapp/webservice/contact/ContactAPI" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://example.com/trainingapp/webservice/contact/ContactAPI" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/ws/soapheaders" schemaLocation="../../../../../gw/xsd/guidewire/soapheaders.xsd"/>
+      <xs:import namespace="http://example.com/trainingapp/webservice/contact"/>
+      <!-- doesContactExist(String) : boolean -->
+      <xs:element name="doesContactExist">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="publicId" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="doesContactExistResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ServerStateException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="PermissionException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="BadIdentifierException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="WsiAuthenticationException">
+        <xs:complexType/>
+      </xs:element>
+      <!-- setContactEmail(String, String) -->
+      <xs:element name="setContactEmail">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="publicId" type="xs:string" minOccurs="0"/>
+            <xs:element name="email" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="setContactEmailResponse">
+        <xs:complexType/>
+      </xs:element>
+      <!-- getContactInfo(String) : ContactInfo -->
+      <xs:element name="getContactInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="publicId" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getContactInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="pogo:ContactInfo" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema targetNamespace="http://example.com/trainingapp/webservice/contact" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ContactInfo">
+        <xs:sequence>
+          <xs:element name="contactName" type="xs:string" minOccurs="0"/>
+          <xs:element name="contactType" type="xs:string" minOccurs="0"/>
+          <xs:element name="email" type="xs:string" minOccurs="0"/>
+          <xs:element name="primaryPhone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:portType name="ContactAPIPortType">
+    <wsdl:operation name="doesContactExist">
+      <wsdl:input name="doesContactExist" message="tns:doesContactExist"/>
+      <wsdl:output name="doesContactExistResponse" message="tns:doesContactExistResponse"/>
+      <!--  -->
+      <wsdl:fault name="ServerStateException" message="tns:ServerStateException"/>
+      <!--  -->
+      <wsdl:fault name="PermissionException" message="tns:PermissionException"/>
+      <!--  -->
+      <wsdl:fault name="BadIdentifierException" message="tns:BadIdentifierException"/>
+      <wsdl:fault name="WsiAuthenticationException" message="tns:WsiAuthenticationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="setContactEmail">
+      <wsdl:input name="setContactEmail" message="tns:setContactEmail"/>
+      <wsdl:output name="setContactEmailResponse" message="tns:setContactEmailResponse"/>
+      <wsdl:fault name="WsiAuthenticationException" message="tns:WsiAuthenticationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getContactInfo">
+      <wsdl:input name="getContactInfo" message="tns:getContactInfo"/>
+      <wsdl:output name="getContactInfoResponse" message="tns:getContactInfoResponse"/>
+      <wsdl:fault name="WsiAuthenticationException" message="tns:WsiAuthenticationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContactAPISoap12Binding" type="tns:ContactAPIPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="doesContactExist">
+      <soap12:operation soapActionRequired="false" style="document"/>
+      <wsdl:input name="doesContactExist">
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap12:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap12:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doesContactExistResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerStateException">
+        <soap12:fault name="ServerStateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionException">
+        <soap12:fault name="PermissionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="BadIdentifierException">
+        <soap12:fault name="BadIdentifierException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap12:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setContactEmail">
+      <soap12:operation soapActionRequired="false" style="document"/>
+      <wsdl:input name="setContactEmail">
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap12:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap12:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setContactEmailResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap12:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContactInfo">
+      <soap12:operation soapActionRequired="false" style="document"/>
+      <wsdl:input name="getContactInfo">
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap12:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap12:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContactInfoResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap12:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ContactAPISoap11Binding" type="tns:ContactAPIPortType">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="doesContactExist">
+      <soap11:operation style="document"/>
+      <wsdl:input name="doesContactExist">
+        <soap11:body use="literal"/>
+        <soap11:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap11:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap11:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doesContactExistResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerStateException">
+        <soap11:fault name="ServerStateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionException">
+        <soap11:fault name="PermissionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="BadIdentifierException">
+        <soap11:fault name="BadIdentifierException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap11:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setContactEmail">
+      <soap11:operation style="document"/>
+      <wsdl:input name="setContactEmail">
+        <soap11:body use="literal"/>
+        <soap11:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap11:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap11:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setContactEmailResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap11:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContactInfo">
+      <soap11:operation style="document"/>
+      <wsdl:input name="getContactInfo">
+        <soap11:body use="literal"/>
+        <soap11:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap11:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap11:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContactInfoResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap11:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContactAPI">
+    <wsdl:port name="ContactAPISoap12Port" binding="tns:ContactAPISoap12Binding">
+      <soap12:address location="local:///trainingapp/webservice/contact/ContactAPI"/>
+    </wsdl:port>
+    <wsdl:port name="ContactAPISoap11Port" binding="tns:ContactAPISoap11Binding">
+      <soap11:address location="local:///trainingapp/webservice/contact/ContactAPI/soap11"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:message name="doesContactExist">
+    <wsdl:part name="parameters" element="tns:doesContactExist"/>
+  </wsdl:message>
+  <wsdl:message name="doesContactExistResponse">
+    <wsdl:part name="parameters" element="tns:doesContactExistResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ServerStateException">
+    <wsdl:part name="ServerStateException" element="tns:ServerStateException"/>
+  </wsdl:message>
+  <wsdl:message name="PermissionException">
+    <wsdl:part name="PermissionException" element="tns:PermissionException"/>
+  </wsdl:message>
+  <wsdl:message name="BadIdentifierException">
+    <wsdl:part name="BadIdentifierException" element="tns:BadIdentifierException"/>
+  </wsdl:message>
+  <wsdl:message name="WsiAuthenticationException">
+    <wsdl:part name="WsiAuthenticationException" element="tns:WsiAuthenticationException"/>
+  </wsdl:message>
+  <wsdl:message name="setContactEmail">
+    <wsdl:part name="parameters" element="tns:setContactEmail"/>
+  </wsdl:message>
+  <wsdl:message name="setContactEmailResponse">
+    <wsdl:part name="parameters" element="tns:setContactEmailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getContactInfo">
+    <wsdl:part name="parameters" element="tns:getContactInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getContactInfoResponse">
+    <wsdl:part name="parameters" element="tns:getContactInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="gw-authentication">
+    <wsdl:part name="gw-authentication" element="gwsoap:authentication"/>
+  </wsdl:message>
+  <wsdl:message name="gw-locale-only">
+    <wsdl:part name="gw-locale-only" element="gwsoap:gw_locale"/>
+  </wsdl:message>
+  <wsdl:message name="gw-language-only">
+    <wsdl:part name="gw-language-only" element="gwsoap:gw_language"/>
+  </wsdl:message>
+  <wsdl:message name="gw-transaction-id">
+    <wsdl:part name="gw-transaction-id" element="gwsoap:transaction_id"/>
+  </wsdl:message>
+  <wsdl:message name="gw-traceability-id">
+    <wsdl:part name="gw-traceability-id" element="gwsoap:traceability_id"/>
+  </wsdl:message>
+</wsdl:definitions>

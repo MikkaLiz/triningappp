@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<typelist xmlns="http://guidewire.com/typelists" name="Ceiling_Type" desc="">
+  <typecode
+    code="Pizarreño"
+    name="Pizarreño"
+    priority="10"/>
+  <typecode
+    code="Fibrocemento"
+    name="Fibrocemento"
+    priority="20"/>
+  <typecode
+    code="Termoplástica"
+    name="Termoplástica"
+    priority="30"/>
+  <typecode
+    code="Polibicarbonato"
+    name="Polibicarbonato"
+    priority="40"/>
+  <typecode
+    code="Madera"
+    name="Madera"/>
+</typelist>

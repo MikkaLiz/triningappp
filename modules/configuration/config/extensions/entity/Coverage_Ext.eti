@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<entity
+  xmlns="http://guidewire.com/datamodel"
+  entity="Coverage_Ext"
+  table="coverage_ext"
+  type="retireable"
+  exportable="true"
+  final="false">
+  <column
+    name="ValuePercentage"
+    nullok="true"
+    type="decimal">
+    <columnParam
+      name="precision"
+      value="4"/>
+    <columnParam
+      name="scale"
+      value="2"/>
+  </column>
+  <column
+    name="Name"
+    nullok="true"
+    type="varchar">
+    <columnParam
+      name="size"
+      value="20"/>
+  </column>
+  <typekey
+    name="CoverableType"
+    nullok="true"
+    typelist="CoverableType"/>
+  <foreignkey
+    fkentity="Poliza"
+    name="PolizaFK"
+    nullok="true"/>
+</entity>

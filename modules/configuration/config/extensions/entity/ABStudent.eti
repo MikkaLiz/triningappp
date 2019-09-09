@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<subtype
+  xmlns="http://guidewire.com/datamodel"
+  entity="ABStudent"
+  supertype="ABPerson">
+  <column
+    name="Grades"
+    nullok="true"
+    type="decimal">
+    <columnParam
+      name="precision"
+      value="2"/>
+    <columnParam
+      name="scale"
+      value="1"/>
+  </column>
+</subtype>

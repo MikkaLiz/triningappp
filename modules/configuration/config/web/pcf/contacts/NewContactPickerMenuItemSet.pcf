@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../pcf.xsd">
+  <MenuItemSet
+    id="NewContactPickerMenuItemSet">
+    <Require
+      name="requiredContactType"
+      type="Type"/>
+    <Require
+      name="parentContact"
+      type="ABContact"/>
+    <MenuItem
+      id="NewContactPickerMenuItemSet_NewPersonMenuItem"
+      label="DisplayKey.get(&quot;Web.NewContactMenu.NewPerson&quot;)"
+      visible="requiredContactType.isAssignableFrom(entity.ABPerson)">
+      <MenuItem
+        action="NewContactPopup.push(entity.ABPerson, parentContact, false)"
+        id="NewContactPickerMenuItemSet_OtherPersonMenuItem"
+        label="DisplayKey.get(&quot;Web.NewContactMenu.OtherPerson&quot;)"
+        visible="requiredContactType.isAssignableFrom(entity.ABPerson)"></MenuItem>
+      <MenuItem
+        action="NewContactPopup.push(entity.ABPerson, parentContact, true)"
+        id="NewContactPickerMenuItemSet_OtherPersonForeignMenuItem"
+        label="DisplayKey.get(&quot;Web.NewContactMenu.OtherForeignPerson&quot;)"
+        visible="requiredContactType.isAssignableFrom(entity.ABPerson)"></MenuItem>
+    </MenuItem>
+    <MenuItem
+      id="NewContactPickerMenuItemSet_NewCompanyMenuItem"
+      label="DisplayKey.get(&quot;Web.NewContactMenu.NewCompany&quot;)"
+      visible="requiredContactType.isAssignableFrom(entity.ABCompany)">
+      <MenuItem
+        action="NewContactPopup.push(entity.ABCompany, parentContact, true)"
+        id="NewContactPickerMenuItemSet_OtherCompanyMenuItem"
+        label="DisplayKey.get(&quot;Web.NewContactMenu.OtherCompany&quot;)"
+        visible="requiredContactType.isAssignableFrom(entity.ABCompany)"/>
+    </MenuItem>
+  </MenuItemSet>
+</PCF>

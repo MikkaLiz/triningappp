@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../../pcf.xsd">
+  <DetailViewPanel
+    id="ContactBasicsDV"
+    mode="ABPerson|ABPersonVendor|ABAdjudicator|ABUserContact|ABDoctor|ABAttorney|ABPolicyPerson">
+    <Require
+      name="contact"
+      type="ABContact"/>
+    <Require
+      name="isForeigner"
+      type="boolean"/>
+    <Variable
+      initialValue="contact.CategoryScores != null and contact.CategoryScores.length &gt; 0"
+      name="hasCategoryScores"
+      type="Boolean"/>
+    <Variable
+      initialValue="new gw.web.ContactDetailsVendorHelper(contact)"
+      name="contactDetailsVendorHelper"
+      type="gw.web.ContactDetailsVendorHelper"/>
+    <InputColumn>
+      <TextInput
+        boldLabel="true"
+        boldValue="true"
+        id="CreateStatus"
+        label="DisplayKey.get(&quot;Web.ContactDetail.CreateStatus&quot;)"
+        value="contact.CreateStatus.DisplayName"
+        visible="contact.CreateStatus != ContactCreationApprovalStatus.TC_APPROVED"/>
+      <InputDivider
+        visible="contact.CreateStatus != ContactCreationApprovalStatus.TC_APPROVED"/>
+      <Label
+        label="contact.getSubtype().DisplayName.concat((isForeigner)?&quot; Extranjera&quot;:&quot;&quot;)"/>
+      <InputSetRef
+        def="NewContactInputInputSet(contact, isForeigner)"/>
+      <InputSet
+        visible="false">
+        <TextInput
+          editable="true"
+          id="FormerName"
+          label="DisplayKey.get(&quot;Web.ContactDetail.Name.FormerName&quot;)"
+          value="(contact as ABPerson).FormerName"/>
+      </InputSet>
+      <TypeKeyInput
+        editable="true"
+        id="VendorAvailability"
+        label="DisplayKey.get(&quot;Web.ContactDetail.VendorAvailability&quot;)"
+        required="contact.Vendor"
+        value="contact.VendorAvailability"
+        valueType="typekey.VendorAvailabilityType"
+        visible="contact.Vendor">
+        <PostOnChange/>
+      </TypeKeyInput>
+      <TextInput
+        editable="true"
+        id="VendorUnavailableMessageInput"
+        label="DisplayKey.get(&quot;Web.ContactDetail.VendorUnavailableMessage&quot;)"
+        maxChars="255"
+        value="contact.VendorUnavailableMessage"
+        visible="contactDetailsVendorHelper.ShowVendorUnavailableMessage"/>
+      <InputDivider/>
+      <InputDivider
+        visible="hasCategoryScores or (contact.Score != null)"/>
+      <Label
+        label="DisplayKey.get(&quot;Web.Reviews.ReviewPerformance&quot;)"
+        visible="hasCategoryScores or (contact.Score != null)"/>
+      <TextInput
+        id="score"
+        label="DisplayKey.get(&quot;Web.Reviews.OverallScore&quot;)"
+        value="contact.Score"
+        valueType="java.lang.Integer"
+        visible="contact.Score != null"/>
+      <ListViewInput
+        label="DisplayKey.get(&quot;Web.Reviews.CategoryScores&quot;)"
+        visible="hasCategoryScores">
+        <Toolbar/>
+        <ListViewPanel
+          id="CategoryScoresLV">
+          <RowIterator
+            editable="false"
+            elementName="categoryScore"
+            pageSize="0"
+            value="contact.getSortedCategoryScores()"
+            valueType="entity.ABContactCategoryScore[]">
+            <Row>
+              <TypeKeyCell
+                enableSort="false"
+                id="Category"
+                label="DisplayKey.get(&quot;Web.Reviews.Category&quot;)"
+                value="categoryScore.ReviewCategory"
+                valueType="typekey.ReviewCategory"/>
+              <TextCell
+                enableSort="false"
+                id="Score"
+                label="DisplayKey.get(&quot;Web.Reviews.Score&quot;)"
+                value="categoryScore.Score"
+                valueType="java.lang.Integer"/>
+            </Row>
+          </RowIterator>
+        </ListViewPanel>
+      </ListViewInput>
+    </InputColumn>
+    <Code><![CDATA[function isVendor(aContact : ABContact) : boolean {
+      return aContact typeis ABPersonVendor;
+      }
+
+      function isAdjudicator(aContact : ABContact) : boolean {
+      return aContact typeis ABAdjudicator;
+      }
+
+      function isPersonOnly(aContact : ABContact) : boolean {
+      return aContact.Subtype==TC_ABPERSON;
+      }
+
+      function isPolicyPerson(aContact : ABContact) : boolean {
+      return aContact typeis ABPolicyPerson;
+      }]]></Code>
+  </DetailViewPanel>
+</PCF>

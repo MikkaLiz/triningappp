@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<typelist xmlns="http://guidewire.com/typelists" name="Ciudad_Ext" desc="Lista de ciudades">
+  <typecode
+    code="CLP"
+    name="Concepcion"
+    priority="10"/>
+  <typecode
+    code="SCL"
+    name="Santiago"
+    priority="20"/>
+  <typecode
+    code="PMC"
+    name="Puerto Montt"
+    priority="30"/>
+  <typecode
+    code="PUQ"
+    name="Punta Arenas"/>
+  <typefilter
+    desc="zona sur de chile"
+    name="ZonaSur">
+    <include
+      code="CLP"/>
+    <include
+      code="PMC"/>
+    <include
+      code="PUQ"/>
+  </typefilter>
+</typelist>

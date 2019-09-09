@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../pcf.xsd">
+  <InputSet
+    id="NewContactInputInputSet">
+    <Require
+      name="contact"
+      type="ABContact"/>
+    <Require
+      name="isForeigner"
+      type="boolean"/>
+    <TextInput
+      editable="true"
+      id="Rut"
+      label="DisplayKey.get(&quot;Training.Rut&quot;)"
+      required="(!isForeigner)"
+      validationExpression="bootcamp.rut.RutValidation.validate(contact.Rut_Ext)"
+      value="contact.Rut_Ext"
+      visible="!isForeigner">
+      <PostOnChange
+        target="Passport"/>
+    </TextInput>
+    <TextInput
+      editable="true"
+      id="Passport"
+      label="DisplayKey.get(&quot;Training.Passport&quot;)"
+      required="(isForeigner)"
+      value="contact.Passport_Ext"
+      visible="isForeigner">
+      <PostOnChange
+        target="Rut"/>
+    </TextInput>
+    <TextInput
+      editable="true"
+      id="FirstName"
+      label="DisplayKey.get(&quot;Training.FirstName&quot;)"
+      value="(contact as ABPerson).FirstName"/>
+    <TextInput
+      editable="true"
+      id="LastName"
+      label="DisplayKey.get(&quot;Training.LastName&quot;)"
+      required="false"
+      value="(contact as ABPerson).LastName"/>
+    <TextInput
+      editable="true"
+      id="Address"
+      label="DisplayKey.get(&quot;Training.Address&quot;)"
+      value="contact.PrimaryAddress.AddressLine1"/>
+    <TypeKeyInput
+      editable="true"
+      id="Region"
+      label="DisplayKey.get(&quot;Training.Region&quot;)"
+      value="contact.Region"
+      valueType="typekey.Regiones_Ext"/>
+    <TextInput
+      editable="true"
+      id="ZipCode"
+      label="DisplayKey.get(&quot;Training.ZipCode&quot;)"
+      regex="&quot;[0-9]{7}&quot;"
+      value="contact.CodigoPostal_Ext"/>
+    <DateInput
+      editable="true"
+      id="DateTime"
+      label="DisplayKey.get(&quot;Training.DateOfBirth&quot;)"
+      validationExpression="ABPerson.verifyAge((contact as ABPerson).DateOfBirth)"
+      value="(contact as ABPerson).DateOfBirth"/>
+  </InputSet>
+</PCF>

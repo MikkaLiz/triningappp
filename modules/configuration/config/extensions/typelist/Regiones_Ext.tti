@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<typelist xmlns="http://guidewire.com/typelists" name="Regiones_Ext" desc="Listado de regiones">
+  <typecode
+    code="58"
+    name="Arica y Parinacota"
+    priority="1"/>
+  <typecode
+    code="57"
+    name="Tarapaca"
+    priority="2"/>
+  <typecode
+    code="55"
+    name="Antofagasta"
+    priority="3"/>
+  <typecode
+    code="52"
+    name="Atacama"
+    priority="4"/>
+  <typecode
+    code="51"
+    name="Coquimbo"
+    priority="5"/>
+  <typecode
+    code="32"
+    name="Valparaiso"
+    priority="6"/>
+  <typecode
+    code="2"
+    name="Metropolitana"
+    priority="7"/>
+  <typecode
+    code="72"
+    name="O´Higgins"
+    priority="8"/>
+  <typecode
+    code="71"
+    name="Maule"
+    priority="9"/>
+  <typecode
+    code="41"
+    name="Biobio"
+    priority="10"/>
+  <typecode
+    code="45"
+    name="Araucania"
+    priority="11"/>
+  <typecode
+    code="63"
+    name="Los Rios"
+    priority="12"/>
+  <typecode
+    code="65"
+    name="Los Lagos"
+    priority="13"/>
+  <typecode
+    code="67"
+    name="Aysen"
+    priority="14"/>
+  <typecode
+    code="61"
+    name="Magallanes y Antartica Chilena"
+    priority="15"/>
+</typelist>
