@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Entity
+  name="Coverable_Ext">
+  <Columns>
+    <Column
+      beanPath="Coverable_Ext.PublicID"
+      name="PublicID"/>
+    <Column
+      beanPath="Coverable_Ext.CoverableType"
+      name="Subtype"/>
+    <Column
+      beanPath="Coverable_Ext.CostoReposicion"
+      name="Costo"/>
+    <Column
+      beanPath="Coverable_Ext.OccupationType"
+      name="TipoHome"/>
+    <Column
+      beanPath="Coverable_Ext.CeilingType"
+      name="TipoTecho"/>
+    <Column
+      beanPath="Coverable_Ext.Brand"
+      name="Marca"/>
+    <Column
+      beanPath="Coverable_Ext.Model"
+      name="Modelo"/>
+    <Column
+      beanPath="Coverable_Ext.Year"
+      name="Year"/>
+  </Columns>
+  <DisplayName></DisplayName>
+</Entity>

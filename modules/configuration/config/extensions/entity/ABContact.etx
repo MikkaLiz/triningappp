@@ -177,9 +177,6 @@
       name="size"
       value="40"/>
   </column>
-  <array
-    arrayentity="Incidente_Ext"
-    name="Incidentes"/>
   <column
     name="LastCourtesyCall_Ext"
     nullok="true"
@@ -230,10 +227,6 @@
   <array
     arrayentity="Coverable_Ext"
     name="Coverables"/>
-  <onetoone
-    fkentity="Coverable_Ext"
-    name="CoverablesContact"
-    nullok="true"/>
   <column
     name="CodigoPostal_Ext"
     nullok="true"
@@ -246,11 +239,12 @@
     name="CreditScore"
     nullok="true"
     type="integer"/>
-  <array
-    arrayentity="Poliza"
-    name="Polizas"/>
   <onetoone
     fkentity="Poliza"
-    name="ContactPolicy"
+    name="PolicyOnetoOne"
+    nullok="true"/>
+  <onetoone
+    fkentity="Coverable_Ext"
+    name="Coverable"
     nullok="true"/>
 </extension>

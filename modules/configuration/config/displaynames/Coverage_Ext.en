@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Entity
+  name="Coverage_Ext">
+  <Columns>
+    <Column
+      beanPath="Coverage_Ext.Name"
+      name="Name"/>
+    <Column
+      beanPath="Coverage_Ext.ValuePercentage"
+      name="Percentage"/>
+  </Columns>
+  <DisplayName>return Name + '(' + Percentage + ')'</DisplayName>
+</Entity>

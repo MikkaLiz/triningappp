@@ -16,9 +16,22 @@
       id="ABContactSummaryScreen">
       <Toolbar>
         <EditButtons/>
+        <ToolbarButton
+          action="UpdateCreditFactor()"
+          id="UpdateCredit"
+          label="DisplayKey.get(&quot;Training.UpdateCreditScore&quot;)"
+          visible="true"/>
       </Toolbar>
       <PanelRef
         def="ABContactSummaryCV(anABContact)"></PanelRef>
     </Screen>
+    <Code><![CDATA[uses gw.transaction.Transaction
+
+function UpdateCreditFactor(){
+  Transaction.runWithNewBundle(\ elt ->{
+    anABContact.CreditScore = bootcamp.creditscorecalculator.creditScoreCalc.getCreditScore(anABContact.Rut_Ext)
+    elt.add(anABContact)
+  })
+}]]></Code>
   </Page>
 </PCF>

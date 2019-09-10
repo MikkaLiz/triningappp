@@ -18,7 +18,7 @@
       label="DisplayKey.get(&quot;Training.Summary&quot;)"
       location="ABContactSummaryPage(anABContact)"/>
     <LocationRef
-      label="DisplayKey.get(&quot;Training.History&quot;)"
-      location="ABContactHistoryPage(anABContact)"/>
+      label="DisplayKey.get(&quot;Training.Policy&quot;)"
+      location="ABContactPolicyPage(anABContact)"/>
   </LocationGroup>
 </PCF>

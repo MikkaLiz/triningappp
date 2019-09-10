@@ -60,7 +60,7 @@
         <TextCell
           id="PostalCode"
           label="gw.api.address.AddressCountrySettings.getSettings(searchCriteria.Address.Country).PostalCodeLabel"
-          value="abContact.PrimaryAddress.PostalCode"/>
+          value="abContact.CodigoPostal_Ext"/>
         <TypeKeyCell
           id="ContactSubtype"
           label="DisplayKey.get(&quot;Web.ContactSearchResults.ContactSubtype&quot;)"

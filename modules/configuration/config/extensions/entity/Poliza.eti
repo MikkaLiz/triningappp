@@ -6,15 +6,30 @@
   type="retireable"
   exportable="true"
   final="false">
-  <foreignkey
-    fkentity="ABContact"
-    name="Contact"
-    nullok="true"/>
   <array
     arrayentity="Coverage_Ext"
     name="Coverages"/>
   <foreignkey
     fkentity="Coverable_Ext"
     name="Coverable"
+    nullok="true"/>
+  <column
+    name="EfectiveDate"
+    nullok="true"
+    type="dateonly"/>
+  <column
+    name="Premium"
+    nullok="true"
+    type="decimal">
+    <columnParam
+      name="precision"
+      value="10"/>
+    <columnParam
+      name="scale"
+      value="2"/>
+  </column>
+  <foreignkey
+    fkentity="ABContact"
+    name="ABContact"
     nullok="true"/>
 </entity>

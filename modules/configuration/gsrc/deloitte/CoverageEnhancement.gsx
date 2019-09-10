@@ -16,6 +16,16 @@ enhancement CoverageEnhancement : Coverage_Ext {
     }, "su")
   }
   static function initCoverage():void{
+    /*new Coverage_Ext(){:Name='Base',:ValuePercentage=0.85, :CoverableType=CoverableType.TC_DWELLING}
+    new Coverage_Ext(){:Name='Bienes Personales',:ValuePercentage=0.75, :CoverableType=CoverableType.TC_DWELLING}
+    new Coverage_Ext(){:Name='Terremotos',:ValuePercentage=2, :CoverableType=CoverableType.TC_DWELLING}
+    new Coverage_Ext(){:Name='Incendios',:ValuePercentage=1.5, :CoverableType=CoverableType.TC_DWELLING}
+    new Coverage_Ext(){:Name='Inundaciones',:ValuePercentage=0.25, :CoverableType=CoverableType.TC_DWELLING}
+    new Coverage_Ext(){:Name='Daño contra terceros',:ValuePercentage=2, :CoverableType=CoverableType.TC_AUTO}
+    new Coverage_Ext(){:Name='Llantas de invierno',:ValuePercentage=1.2, :CoverableType=CoverableType.TC_AUTO}
+    new Coverage_Ext(){:Name='Choques',:ValuePercentage=2.8, :CoverableType=CoverableType.TC_AUTO}
+    new Coverage_Ext(){:Name='Siniestros',:ValuePercentage=1.25, :CoverableType=CoverableType.TC_AUTO}
+    new Coverage_Ext(){:Name='Sistemas eléctricos',:ValuePercentage=5, :CoverableType=CoverableType.TC_AUTO}*/
     if(Query.make(Coverage_Ext).select().getCount() == 0){
       CoverageEnhancement.addNewCoverage('Base', 0.85, CoverableType.TC_DWELLING)
       CoverageEnhancement.addNewCoverage('Bienes Personales', 0.75, CoverableType.TC_DWELLING)

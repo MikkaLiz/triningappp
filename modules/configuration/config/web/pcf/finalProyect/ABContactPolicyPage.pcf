@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../pcf.xsd">
+  <Page
+    canEdit="true"
+    canVisit="true"
+    id="ABContactPolicyPage"
+    title="DisplayKey.get(&quot;Training.Policy&quot;)">
+    <LocationEntryPoint
+      signature="ABContactPolicyPage(anABContact : ABContact)"/>
+    <Variable
+      name="anABContact"
+      type="ABContact"/>
+    <Screen>
+      <DetailViewPanel
+        visible="(anABContact.CreditScore == null || anABContact.CreditScore &lt; 301)">
+        <InputColumn>
+          <Label
+            label="DisplayKey.get(&quot;Training.ErrorPoliza&quot;)"
+            visible="(anABContact.CreditScore == null || anABContact.CreditScore &lt; 301)"/>
+        </InputColumn>
+      </DetailViewPanel>
+      <PanelRef
+        def="PolizaDV(anABContact)"
+        visible="!(anABContact.CreditScore == null || anABContact.CreditScore &lt; 301)">
+        <Toolbar>
+          <EditButtons/>
+          <ToolbarButton
+            action="setPremium()"
+            available="(anABContact.PolicyOnetoOne.Coverable != null)"
+            id="SetPremium"
+            label="&quot;Calcular Prima&quot;"
+            visible="CurrentLocation.isInEditMode()"/>
+        </Toolbar>
+      </PanelRef>
+      <DetailViewPanel
+        visible="!(anABContact.CreditScore == null || anABContact.CreditScore &lt; 301)">
+        <InputColumn>
+          <CheckBoxGroupInput
+            editable="true"
+            id="Coverages"
+            label="DisplayKey.get(&quot;Training.Coverages&quot;)"
+            value="anABContact.PolicyOnetoOne.Coverages"
+            valueRange="(anABContact.PolicyOnetoOne.getCoverable()==null)?null:(anABContact.PolicyOnetoOne.getCoverable().CoverableType==CoverableType.TC_DWELLING)?Coverage_Ext.getDwelling():Coverage_Ext.getAuto()"
+            valueType="entity.Coverage_Ext[]"/>
+        </InputColumn>
+      </DetailViewPanel>
+    </Screen>
+    <Code><![CDATA[uses gw.api.database.IQueryBeanResult
+uses gw.api.database.Relop
+uses gw.transaction.Transaction
+
+uses java.math.BigDecimal
+uses java.math.RoundingMode
+
+function setPremium(): void{
+  var costRepo = anABContact.PolicyOnetoOne.Coverable.CostoReposicion
+  var costPerc: BigDecimal = 0
+  var costCS: BigDecimal = 0
+  if (anABContact.PolicyOnetoOne.Coverages.Count>0){
+    anABContact.PolicyOnetoOne.Coverages.each(\elt -> {
+      costPerc = costPerc + (costRepo * elt.ValuePercentage/100)
+    })
+  }
+  print(costPerc)
+  var costAge: BigDecimal
+  if (anABContact.CreditScore >= 301 && anABContact.CreditScore <= 500) costCS = costRepo*(0.75/100)
+  if (anABContact.CreditScore >= 501 && anABContact.CreditScore <= 700) costCS = costRepo*(0.25/100)
+  if (anABContact.CreditScore >= 701 && anABContact.CreditScore <= 999) costCS = costRepo*(0.25/100)
+  if(!(anABContact typeis ABCompany)) {
+    if (anABContact.Age >= 18 && anABContact.Age <= 25) costAge = costRepo * (1 / 100)
+    if (anABContact.Age >= 26 && anABContact.Age <= 40) costAge = costRepo * (-0.5 / 100)
+    if (anABContact.Age >= 41 && anABContact.Age <= 70) costAge = costRepo * (0.75 / 100)
+    if (anABContact.Age >= 71) costAge = costRepo * (1.5 / 100)
+  }else {costAge = 0}
+  
+  
+  Transaction.runWithNewBundle(\ etl -> {
+    if (anABContact.CreditScore >= 0 && anABContact.CreditScore <= 300) {
+      anABContact.PolicyOnetoOne.Premium = 0
+      etl.add(anABContact)
+    }else{
+      anABContact.PolicyOnetoOne.Premium = (costAge+costCS+costPerc as BigDecimal).setScale(2, RoundingMode.DOWN).stripTrailingZeros()
+      etl.add(anABContact)
+    }
+    
+  })
+}]]></Code>
+  </Page>
+</PCF>

@@ -22,7 +22,8 @@
       <TextInput
         id="Age"
         label="DisplayKey.get(&quot;Training.Age&quot;)"
-        value="anABContact.Age as String"/>
+        value="anABContact.Age as String"
+        visible="(anABContact typeis ABPerson)"/>
       <TextInput
         id="CreditScore"
         label="&quot;Factor de Credito&quot;"
@@ -32,7 +33,6 @@
         label="DisplayKey.get(&quot;Training.CreatedOn&quot;)"
         value="anABContact.CreateTime"/>
       <TextInput
-        editable="CurrentLocation.isInEditMode()"
         id="Rut"
         label="DisplayKey.get(&quot;Training.Rut&quot;)"
         value="anABContact.Rut_Ext"

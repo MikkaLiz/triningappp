@@ -33,6 +33,13 @@
             valueType="entity.Coverable_Ext[]">
             <Row>
               <TextCell
+                id="PublicId"
+                label="DisplayKey.get(&quot;Training.id&quot;)"
+                value="name.PublicID"/>
+              <TextCell
+                editable="true"
+                flatten="true"
+                formatType="currency"
                 id="Costo"
                 label="&quot;Costo&quot;"
                 maxChars="11"
@@ -83,6 +90,11 @@
             valueType="entity.Coverable_Ext[]">
             <Row>
               <TextCell
+                id="PublicId"
+                label="DisplayKey.get(&quot;Training.id&quot;)"
+                value="name.PublicID"/>
+              <TextCell
+                editable="true"
                 id="Costo"
                 label="&quot;Costo&quot;"
                 maxChars="11"

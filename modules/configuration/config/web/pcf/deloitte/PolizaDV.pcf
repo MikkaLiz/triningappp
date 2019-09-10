@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../pcf.xsd">
+  <DetailViewPanel
+    id="PolizaDV">
+    <Require
+      name="anABContact"
+      type="ABContact"/>
+    <InputColumn>
+      <TextInput
+        id="NumPoliza"
+        label="DisplayKey.get(&quot;Training.PolicyId&quot;)"
+        value="anABContact.PolicyOnetoOne.PublicID"/>
+      <DateInput
+        editable="true"
+        id="FechaEfectiva"
+        label="DisplayKey.get(&quot;Training.EfectiveDate&quot;)"
+        value="anABContact.PolicyOnetoOne.EfectiveDate"/>
+      <TextInput
+        editable="(anABContact.PolicyOnetoOne.Coverable != null)?true:false"
+        id="Prima"
+        label="DisplayKey.get(&quot;Training.Premium&quot;)"
+        value="anABContact.PolicyOnetoOne.Premium"
+        valueType="java.math.BigDecimal"/>
+      <RangeInput
+        editable="true"
+        id="Coverables"
+        label="DisplayKey.get(&quot;Training.Coverable&quot;)"
+        value="anABContact.PolicyOnetoOne.Coverable"
+        valueRange="anABContact.getCoverables()"
+        valueType="entity.Coverable_Ext"/>
+    </InputColumn>
+  </DetailViewPanel>
+</PCF>
